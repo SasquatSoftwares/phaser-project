@@ -101,14 +101,14 @@ export default class MainScene extends Phaser.Scene {
       this.spawns.create(x, y, 20, 20);
     }
 
-    // add collider
-    this.physics.add.overlap(
-      this.player,
-      this.spawns,
-      this.onMeetEnemy,
-      false,
-      this
-    );
+    // // add collider
+    // this.physics.add.overlap(
+    //   this.player,
+    //   this.spawns,
+    //   this.onMeetEnemy,
+    //   false,
+    //   this
+    // );
   }
 
   update() {
