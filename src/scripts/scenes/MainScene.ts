@@ -64,7 +64,7 @@ export default class MainScene extends Phaser.Scene {
     var mesa_redondaLayer = map.createLayer('mesa_redonda', mesa_redonda, 0, 0);
     var paredesLayer = map.createLayer('paredes', paredes, 0, 0);
     var cadeirasLayer = map.createLayer('cadeiras', moveis_decoracao, 0, 0);
-    var rack_frenteLayer = map.createLayer('rack/rack_frente', rack, 0, 0);
+    var rack_frenteLayer = map.createLayer('rack/rack_frente', rack, 0, -11);
 
     const allObstacles = [
       vidro_externoLayer, janelas_superioresLayer, cadeiras_topoLayer, mesas_topoLayer,
