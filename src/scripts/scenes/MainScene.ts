@@ -26,17 +26,58 @@ export default class MainScene extends Phaser.Scene {
   create() {
     console.log('create(MainScene);');
     // create the map
-    var map = this.make.tilemap({ key: 'map' });
+    var map = this.make.tilemap({ key: 'yssy_sede' });
 
     // first parameter is the name of the tilemap in tiled
-    var tiles = map.addTilesetImage('spritesheet', 'tiles');
+    var piso = map.addTilesetImage('piso', 'piso');
+    var vidro_externo = map.addTilesetImage('vidro_externo', 'vidro_externo');
+    var paredes = map.addTilesetImage('paredes', 'paredes');
+    var moveis_decoracao = map.addTilesetImage('moveis_decoracao', 'moveis_decoracao');
+    var mesa_menor = map.addTilesetImage('mesa_menor', 'mesa_menor');
+    var paredes_internas = map.addTilesetImage('paredes_internas', 'paredes_internas');
+    var rack = map.addTilesetImage('rack', 'rack');
+    var laptop = map.addTilesetImage('laptop', 'laptop');
+    var mesa = map.addTilesetImage('mesa', 'mesa');
+    var mesa_redonda = map.addTilesetImage('mesa_redonda', 'mesa_redonda');
 
     // creating the layers
-    var grass = map.createLayer('Grass', tiles, 0, 0);
-    var obstacles = map.createLayer('Obstacles', tiles, 0, 0);
+    var pisoLayer = map.createLayer('piso', piso, 0, 0);
+    var vidro_externoLayer = map.createLayer('vidros_externo', vidro_externo, 0, 0);
+    var janelas_superioresLayer = map.createLayer('janelas_superiores', paredes, 0, 0);
+    var cadeiras_topoLayer = map.createLayer('cadeiras_topo', moveis_decoracao, 0, 0);
+    var mesas_topoLayer = map.createLayer('mesas_topo', mesa_menor, 0, 0);
+    var mesas_topo_uncollideLayer = map.createLayer('mesas_topo_uncollide', mesa_menor, 0, 0);
+    var paredes_internasLayer = map.createLayer('paredes_internas', [paredes_internas, paredes], 0, 0);
+    var paredes_internas_caminhoLayer = map.createLayer('paredes_internas_caminho', paredes_internas, 0, 0);
+    var cadeiras_atras_mesas_dir_topoLayer = map.createLayer('direita/topo/cadeiras_atras_mesas_dir_topo', moveis_decoracao, 0, 0);
+    var mesas_frente_paredes_dir_topoLayer = map.createLayer('direita/topo/mesas_frente_paredes_dir_topo', mesa, 0, 0);
+    var cadeiras_frente_mesas_dir_topoLayer = map.createLayer('direita/topo/cadeiras_frente_mesas_dir_topo', moveis_decoracao, 0, 0);
+    var laptops_dir_topoLayer = map.createLayer('direita/topo/laptops_dir_topo', laptop, 0, 0);
+    var cadeiras_atras_mesas_dirLayer = map.createLayer('direita/cadeiras_atras_mesas_dir', moveis_decoracao, 0, 0);
+    var mesas_frente_paredes_dirLayer = map.createLayer('direita/mesas_frente_paredes_dir', mesa, 0, 0);
+    var cadeiras_frente_mesas_dirLayer = map.createLayer('direita/cadeiras_frente_mesas_dir', moveis_decoracao, 0, 0);
+    var laptops_dirLayer = map.createLayer('direita/laptops_dir', laptop, 0, 0);
+    var cadeiras_atras_mesas_esqLayer = map.createLayer('esquerda/cadeiras_atras_mesas_esq', moveis_decoracao, 0, 0);
+    var mesas_frente_paredes_esqLayer = map.createLayer('esquerda/mesas_frente_paredes_esq', mesa, 0, 0);
+    var cadeiras_frente_mesas_esqLayer = map.createLayer('esquerda/cadeiras_frente_mesas_esq', moveis_decoracao, 0, 0);
+    var laptops_esqLayer = map.createLayer('esquerda/laptops_esq', laptop, 0, 0);
+    var mesa_redondaLayer = map.createLayer('mesa_redonda', mesa_redonda, 0, 0);
+    var paredesLayer = map.createLayer('paredes', paredes, 0, 0);
+    var cadeirasLayer = map.createLayer('cadeiras', moveis_decoracao, 0, 0);
+    var rack_frenteLayer = map.createLayer('rack/rack_frente', rack, 0, 0);
+
+    const allObstacles = [
+      vidro_externoLayer, janelas_superioresLayer, cadeiras_topoLayer, mesas_topoLayer,
+      mesa_redondaLayer, paredes_internasLayer, cadeiras_atras_mesas_dir_topoLayer,
+      mesas_frente_paredes_dir_topoLayer, cadeiras_frente_mesas_dir_topoLayer,
+      laptops_dir_topoLayer, cadeiras_atras_mesas_dirLayer, mesas_frente_paredes_dirLayer,
+      cadeiras_frente_mesas_dirLayer, laptops_dirLayer, cadeiras_atras_mesas_esqLayer,
+      mesas_frente_paredes_esqLayer, cadeiras_frente_mesas_esqLayer, laptops_esqLayer,
+      paredesLayer, cadeirasLayer, rack_frenteLayer
+    ];
 
     // make all tiles in obstacles collidable
-    obstacles.setCollisionByExclusion([-1]);
+    allObstacles.forEach((o) => o.setCollisionByExclusion([-1]));
 
     //  animation with key 'left', we don't need left and right as we will use one and flip the sprite
     this.anims.create({
@@ -76,6 +117,7 @@ export default class MainScene extends Phaser.Scene {
 
     // our player sprite created through the phycis system
     this.player = this.physics.add.sprite(50, 100, 'player', 6);
+    var rack_fundoLayer = map.createLayer('rack/rack_fundo', rack, 0, 0);
 
     // don't go out of the map
     this.physics.world.bounds.width = map.widthInPixels;
@@ -83,7 +125,7 @@ export default class MainScene extends Phaser.Scene {
     this.player.setCollideWorldBounds(true);
 
     // don't walk on trees
-    this.physics.add.collider(this.player, obstacles);
+    allObstacles.forEach((o) => this.physics.add.collider(this.player, o));
 
     // limit camera to map
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
