@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <meta name="theme-color" content="#000000" />
@@ -21,19 +19,21 @@
     <link rel="icon" type="image/png" sizes="192x192" href="./icons/icons-192.png" />
     <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="./icons/icons-192.png" />
 
-    <link rel="icon" type="image/png" sizes="512x512" href="./icons/icons-512.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon.png">
     <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="./icons/icons-512.png" />
 
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./favicon.png" type="image/png" />
 
-    <title><%= htmlWebpackPlugin.options.gameName %></title>
+    <title>
+        <%= htmlWebpackPlugin.options.gameName %>
+    </title>
     <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        background-color: #000000;
-      }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background-color: #000000;
+        }
     </style>
 
     <noscript>Please enable javascript to continue using this application.</noscript>
@@ -46,8 +46,10 @@
         })
       }
     </script> -->
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="phaser-game"></div>
-  </body>
+</body>
+
 </html>
