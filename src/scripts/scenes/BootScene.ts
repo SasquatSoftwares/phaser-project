@@ -18,7 +18,7 @@ export default class BootScene extends Phaser.Scene {
     this.load.image('paredes', 'assets/map/paredes.png');
     this.load.image('piso', 'assets/map/piso.png');
     this.load.image('rack', 'assets/map/rack.png');
-    this.load.image('vidro_externo', 'assets/map/vidro_externo.png');
+    this.load.image('vidro_externo', 'assets/map/glass_city.png');
 
     // map in json format
     this.load.tilemapTiledJSON('map', 'assets/map/map.json');

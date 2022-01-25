@@ -116,7 +116,7 @@ export default class MainScene extends Phaser.Scene {
     });
 
     // our player sprite created through the phycis system
-    this.player = this.physics.add.sprite(50, 100, 'player', 6);
+    this.player = this.physics.add.sprite(500, 350, 'player', 6);
     var rack_fundoLayer = map.createLayer('rack/rack_fundo', rack, 0, 0);
 
     // don't go out of the map

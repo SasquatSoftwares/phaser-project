@@ -9,8 +9,9 @@ const config = {
   type: Phaser.AUTO,
   width: DEFAULT_WIDTH,
   height: DEFAULT_HEIGHT,
-  zoom: 2,
+  zoom: 1,
   pixelArt: true,
+  parent: 'phaser-game',
   physics: {
     default: 'arcade',
     arcade: {
