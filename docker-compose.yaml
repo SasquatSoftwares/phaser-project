@@ -4,3 +4,5 @@ services:
   app:
     container_name: phaser-yssy-project
     build: .
+    ports:
+      - '8008:8008'
