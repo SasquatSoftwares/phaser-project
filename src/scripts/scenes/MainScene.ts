@@ -65,6 +65,7 @@ export default class MainScene extends Phaser.Scene {
     var paredesLayer = map.createLayer('paredes', paredes, 0, 0);
     var cadeirasLayer = map.createLayer('cadeiras', moveis_decoracao, 0, 0);
     var rack_frenteLayer = map.createLayer('rack/rack_frente', rack, 0, -11);
+    var plantasLayer = map.createLayer('plantas', moveis_decoracao, 0, 0);
 
     const allObstacles = [
       vidro_externoLayer, janelas_superioresLayer, cadeiras_topoLayer, mesas_topoLayer,
@@ -73,7 +74,7 @@ export default class MainScene extends Phaser.Scene {
       laptops_dir_topoLayer, cadeiras_atras_mesas_dirLayer, mesas_frente_paredes_dirLayer,
       cadeiras_frente_mesas_dirLayer, laptops_dirLayer, cadeiras_atras_mesas_esqLayer,
       mesas_frente_paredes_esqLayer, cadeiras_frente_mesas_esqLayer, laptops_esqLayer,
-      paredesLayer, cadeirasLayer, rack_frenteLayer
+      paredesLayer, cadeirasLayer, rack_frenteLayer, plantasLayer
     ];
 
     // make all tiles in obstacles collidable
