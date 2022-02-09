@@ -14,6 +14,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js']
+
     },
     module: {
         rules: [{ test: /\.tsx?$|\.jsx?$/, include: path.join(__dirname, '../src'), loader: 'ts-loader' }]
@@ -37,7 +38,8 @@ module.exports = {
                 { from: 'src/assets', to: 'assets' },
                 { from: 'pwa', to: '' },
                 { from: 'src/favicon.ico', to: '' },
-                { from: 'src/favicon.png', to: '' }
+                { from: 'src/favicon.png', to: '' },
+                { from: 'src/style.css', to: '' }
             ]
         })
     ]

@@ -18,5 +18,6 @@
     "lib": ["dom", "esnext"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "resolveJsonModule": true
 }
