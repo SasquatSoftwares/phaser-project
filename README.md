@@ -1,4 +1,4 @@
-# Phaser Yssy Project
+# Phaser Project
 
 ## Como utilizar
 
